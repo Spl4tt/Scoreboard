@@ -72,6 +72,14 @@ class App extends Component {
     });
   }
 
+  checkHighestScore = (player) => {
+    const scores = this.state.players.map(player => player.score)
+    const highestScore = Math.max(...scores);
+
+    return highestScore > 0 && highestScore === player.score;
+  }
+
+
   render() {
     return (
       <div className="scoreboard">
@@ -89,6 +97,7 @@ class App extends Component {
             index={index}
             changeScore={this.handleScoreChange}
             removePlayer={this.handleRemovePlayer}
+            isHighestScore={this.checkHighestScore(player)}
           />
         )}
         <AddPlayerForm
