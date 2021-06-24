@@ -10,20 +10,21 @@ const App = () => {
             <Header/>
             {/* Players list */}
             <Consumer>
-                {
-                    context => {
+                {context => {
+                    console.log('players here: ', context.players);
+                    return (
                         context.players.map((player, index) =>
                             <Player
+                                key={player.id.toString()}
                                 name={player.name}
                                 score={player.score}
                                 id={player.id}
-                                key={player.id.toString()}
                                 index={index}
-                                isHighestScore={context.checkHighestScore(player)}
+                                isHighestScore={context.actions.isHighScore(player)}
                             />
                         )
-                    }
-                }
+                    )
+                }}
             </Consumer>
             <AddPlayerForm/>
         </div>

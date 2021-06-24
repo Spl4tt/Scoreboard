@@ -76,8 +76,8 @@ export class Provider extends Component {
         console.log('gets execd');
         const scores = this.state.players.map(player => player.score)
         const highestScore = Math.max(...scores);
-
         return highestScore > 0 && highestScore === player.score;
+        //return Math.max(...scores)
     }
 
     render() {
@@ -87,7 +87,8 @@ export class Provider extends Component {
                 actions: {
                     changeScore: this.handleScoreChange,
                     removePlayer: this.handleRemovePlayer,
-                    addPlayer: this.handleAddPlayer
+                    addPlayer: this.handleAddPlayer,
+                    isHighScore: this.checkHighestScore
                 }
             }}>
                 {this.props.children}
